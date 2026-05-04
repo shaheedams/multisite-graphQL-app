@@ -1,0 +1,26 @@
+.contact {
+    background-color: var(--bg3);
+    padding: 60px 0;
+    color: var(--white);
+    text-align: center;
+
+    .heading {
+        font-size: 38px;
+        font-weight: 600;
+        margin-bottom: 32px;
+    }
+
+    .contactCta {
+        padding: 15px 12px;
+        border: 1px solid var(--black);
+        font-size: 18px;
+        font-weight: 600;
+        background-color: var(--black);
+        min-width: 100px;
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+    }
+
+
+}

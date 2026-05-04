@@ -1,0 +1,16 @@
+{
+  "name": "multisite-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "author": "Shaheed",
+  "license": "ISC",
+  "description": "A multisite application with Next.js as a client side, Express with MongoDB as a backend and then GraphQL as a API Architecture",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
