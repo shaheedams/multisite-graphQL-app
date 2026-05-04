@@ -7,6 +7,8 @@ import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react/index.js";
 // import { ApolloProvider } from "@apollo/client/react";
 
+const GQL_URL: string = process.env.NEXT_PUBLIC_GQL_API_URL || 'http://localhost:7100/';
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,7 +27,7 @@ const geistMono = Geist_Mono({
 // GraphQl client init 
 
 const link = new HttpLink({
-  uri: 'http://localhost:7800/'
+  uri: GQL_URL
 });
 
 const client = new ApolloClient({

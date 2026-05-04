@@ -1,6 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { SiteModel } from "../models/Site.model";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { config } from "./env";
 
 const typeDefs = `#graphql
 type MultiSite {
@@ -91,7 +92,7 @@ export const connectGraphQL = async () => {
 
   const { url } = await startStandaloneServer(server, {
     listen: {
-      port: 7800
+      port: Number(config.gql_port)
     }
   })
 
