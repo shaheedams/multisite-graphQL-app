@@ -7,7 +7,5 @@ const siteRouter = Router();
 siteRouter.get('/', siteController.getAll);
 siteRouter.get('/:id', siteController.getBySiteId);
 siteRouter.post('/', siteController.createSite);
-// router.patch('/:id',);
-// router.delete('/:id',);
 
 export default siteRouter;

@@ -7,11 +7,11 @@ import cors from 'cors';
 import { config } from "./config/env";
 import rateLimit from "express-rate-limit";
 import siteRouter from "./routes/sIte.routes";
-
+// ENV & app config 
 dotenv.config();
 const app = express();
 
-
+// Middleware configs 
 app.use(helmet());
 app.use(compression());
 app.use(morgan('dev'));
@@ -33,12 +33,10 @@ const globalRateLimit = rateLimit({
 app.use(globalRateLimit);
 app.use(express.json({ limit: "2mb" }));
 
+// Routes 
 app.use("/api/site", siteRouter);
 
-app.get('/api', (_req, res) => {
-    res.status(200).send({ success: true, status: "ok", data: "Welcome to multisite API", timestamp: new Date().toISOString() })
-});
-
+// Route check 
 app.get('/api/health', (_req, res) => {
     res.status(200).send({ success: true, status: "ok", timestamp: new Date().toISOString() })
 });

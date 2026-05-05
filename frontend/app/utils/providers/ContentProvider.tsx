@@ -3,8 +3,8 @@
 
 import { useSearchParams } from "next/navigation";
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
-import { useFetch } from "../customHooks/useFetch";
-import { SiteService } from "@/app/api/services/siteService";
+// import { useFetch } from "../customHooks/useFetch";
+// import { SiteService } from "@/app/api/services/siteService";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 
@@ -15,8 +15,10 @@ interface siteDataType {
     loading: boolean;
 }
 
+// Context provider 
 const ContentProvider = createContext<null | siteDataType>(null);
 
+// GraphQL Query 
 const siteQuery = gql`
     query Site($id: String) {
         site(id: $id) {
@@ -120,7 +122,6 @@ export const ContentWrapper = ({ children }: { children: ReactNode }) => {
 
     // const { data: siteContent, loading } = useFetch(() => SiteService.getBySiteId("multisite_home_001"));
 
-
     // const siteData = useMemo(() => {
     //     // const data: any = {
     //     //     "_id": "multisite_home_001",
@@ -213,11 +214,12 @@ export const ContentWrapper = ({ children }: { children: ReactNode }) => {
 
     // Method 2 for fetching data from GRAPHQL API 
 
+    // Getting params from url 
     const searchParams = useSearchParams();
 
     const [lang, setLang] = useState<string>(searchParams.get("ln") || 'en');
-
-    const { data: siteContent, error, loading }: any = useQuery(siteQuery, { variables: { id: "multisite_home_001" } });
+    const siteID: string = process.env.NEXT_PUBLIC_SITE_ID || "multisite_home_001";
+    const { data: siteContent, loading }: any = useQuery(siteQuery, { variables: { id: siteID } });
 
     const siteData = useMemo(() => {
         const data = siteContent?.site;
